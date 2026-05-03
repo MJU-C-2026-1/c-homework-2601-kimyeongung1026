@@ -38,35 +38,41 @@ int main()
   }
 
   //3. 수량 입력 및 총액 계산
-  printf("수량을 입력하세요: ");
+  printf("수량을 입력하세요 (최대 100잔): ");
   scanf("%d", &count);
 
-  total_price = price * count;
-  printf("총 결제 금액은 %d원입니다.\n", total_price);
-
-  //4. 결제 및 잔돈 계산
-  printf("돈을 투입해주세요: ");
-  scanf("%d", &money_in);
-
-  if(money_in >= total_price)
+  if(count>=1 && count<=100)
   {
-    change = money_in - total_price;
-    printf("결제가 완료되었습니다.\n");
-    printf("거스름돈은 %d원입니다. 감사합니다. \n", change);
+    total_price = price * count;
+    printf("총 결제 금액은 %d원입니다.\n", total_price);
 
-    //5. 영수증 출력
-    printf("--------------------\n");
-    printf("합계 금액: %d원\n", total_price);
-    printf("받은 금액: %d원\n", money_in);
-    printf("거스름돈: %d원\n", change);
-    printf("********************\n");
-    printf("이용해주셔서 감사합니다!\n");
-  }
+    //4. 결제 및 잔돈 계산
+    printf("돈을 투입해주세요: ");
+    scanf("%d", &money_in);
 
+    if(money_in >= total_price)
+    {
+      change = money_in - total_price;
+      printf("결제가 완료되었습니다.\n");
+      printf("거스름돈은 %d원입니다. 감사합니다. \n", change);
+
+      //5. 영수증 출력
+      printf("--------------------\n");
+      printf("합계 금액: %d원\n", total_price);
+      printf("받은 금액: %d원\n", money_in);
+      printf("거스름돈: %d원\n", change);
+      printf("********************\n");
+      printf("이용해주셔서 감사합니다!\n");
+    }
+
+    else
+    {
+      printf("잔액이 %d원 부족합니다. 주문이 취소되었습니다.\n", total_price - money_in);
+    }
+  }  
   else
   {
-    printf("잔액이 %d원 부족합니다. 주문이 취소되었습니다.\n", total_price - money_in);
-  }
-
+    printf("수량은 1잔에서 100잔 사이만 주문 가능합니다.\n");
+  }  
   return 0;
 }
